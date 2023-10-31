@@ -6,10 +6,12 @@ def test_question4_pets_older_than_owner():
 
   with pets_db.get_connection() as con:
     res = con.execute(sql_pets_older_than_owner)
+  
     result = res.fetchone()
 
   assert len(result) == 1
   assert result[0] == 2
+
 
 def test_question4_pets_owned_by_nobody():
   pets_db.create_db()
@@ -17,6 +19,7 @@ def test_question4_pets_owned_by_nobody():
   with pets_db.get_connection() as con:
     res = con.execute(sql_pets_owned_by_nobody)
     rows = res.fetchall()
+  
 
   rows.sort()
 
@@ -29,7 +32,9 @@ def test_question4_only_owned_by_bessie():
 
   with pets_db.get_connection() as con:
     res = con.execute(sql_only_owned_by_bessie)
+    
     rows = res.fetchall()
+    print(rows)
 
   rows.sort()
 

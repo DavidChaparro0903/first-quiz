@@ -1,5 +1,8 @@
 import sqlite3
 
+
+print("Conectandoooo")
+
 TABLE_SCHEMA = """
     CREATE TABLE animals (
       animal_id integer,
@@ -63,6 +66,7 @@ def create_db():
   drop_db()
 
   with get_connection() as con:
+  
     con.executescript(TABLE_SCHEMA)
     con.executemany("INSERT INTO animals VALUES(?, ?, ?, ?)", ANIMALS)
     con.executemany("INSERT INTO people VALUES(?, ?, ?, ?)", PEOPLE)

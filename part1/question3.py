@@ -27,18 +27,57 @@
 
 # This function should return an oven instance!
 def make_oven():
-  None
+  return Oven()
 
 def alchemy_combine(oven, ingredients, temperature):
   
   for item in ingredients:
     oven.add(item)
-
   if temperature < 0:
     oven.freeze()
   elif temperature >= 100:
     oven.boil()
   else:
     oven.wait()
-
   return oven.get_output()
+
+
+class Oven:
+  
+   def __init__(self):
+        # Declarar una lista como atributo de la clase
+        self.mis_items = []
+        self.cooking = ""
+
+   def add(self,item):
+      self.mis_items.append(item)
+
+   def mostrar_lista(self):
+      print(self.mis_items)
+   
+   def boil(self):
+      self.cooking = "Hervir"
+     
+   def freeze(self):
+    self.cooking = "Congelar"
+   
+   def wait(self):
+      self.cooking = "Esperando"
+   
+
+   def get_output(self):
+      if  {"lead", "mercury"}.issubset(set(self.mis_items)) and self.cooking == "Hervir":
+         return "gold"
+      elif {"water", "air"}.issubset(set(self.mis_items)) and self.cooking == "Congelar":
+         return "snow"
+      elif {"cheese", "dough", "tomato"}.issubset(set(self.mis_items)) and self.cooking == "Hervir":
+         return "pizza"
+      elif  {"coco", "water"}.issubset(set(self.mis_items)) and self.cooking == "Esperando":
+         return "coconut water"
+      else:
+         return "Receta no conocidad"
+
+
+
+   
+

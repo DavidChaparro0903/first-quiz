@@ -15,7 +15,14 @@
 # it. As always, there is a test suite that checks the result. It is in 
 # `question2_test.py.`
 
-swapper = None
+def swapper(tuple):
+  if(len(tuple) == 2):
+   return (tuple[1],tuple[0])
+  else:
+    return "Por favor ingrese una tupla de dos valores"
 
 def run_swapper(list_of_tuples):
   return list(map(swapper, list_of_tuples))
+
+
+print(run_swapper([("a","b"),("c","d"),["adsad","dsa","sda"]]))
